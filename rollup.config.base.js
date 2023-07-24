@@ -17,12 +17,9 @@ export const baseConfig = {
       entries: [{ find: '@', replacement: path.join(__dirname, 'src') }],
     }),
     copy({
-      targets: [
-        {
-          src: 'package.json',
-          dest: 'dist',
-        },
-      ],
+      targets: ['package.json', 'LICENSE', 'README.md', 'README.en-US.md', 'CHANGELOG.md'].map(
+        (src) => ({ src, dest: 'dist' }),
+      ),
     }),
   ],
 }
