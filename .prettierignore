@@ -1,0 +1,5 @@
+dist
+LICENSE.md
+CHANGELOG.md
+pnpm-lock.yaml
+pnpm-workspace.yaml

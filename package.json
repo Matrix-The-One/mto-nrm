@@ -1,0 +1,59 @@
+{
+  "name": "mto-nrm",
+  "version": "0.1.0",
+  "description": "A library for easy switching of the npm registry",
+  "keywords": [
+    "npm",
+    "registry",
+    "npm registry",
+    "mto-nrm"
+  ],
+  "homepage": "https://github.com/Matrix-The-One/mto-nrm",
+  "bugs": "https://github.com/Matrix-The-One/mto-nrm/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Matrix-The-One/mto-nrm.git"
+  },
+  "license": "MIT",
+  "author": "Matrix-The-One",
+  "type": "module",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "es/index.d.ts",
+  "bin": "lib/index.js",
+  "scripts": {
+    "build": "npx rimraf dist && rollup --config rollup.config.prod.js",
+    "changeset": "changeset",
+    "ci:publish": "pnpm run build && changeset publish",
+    "ci:version": "changeset version",
+    "mto-nrm": "node dist/es/index.js",
+    "ri": "npx rimraf node_modules pnpm-lock.yaml && pnpm i",
+    "start": "rollup --config rollup.config.dev.js -w",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^2.3.0",
+    "chalk": "^5.3.0",
+    "commander": "^11.0.0",
+    "cross-spawn": "^7.0.3",
+    "fs-extra": "^11.1.1"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.2",
+    "@rollup/plugin-alias": "^5.0.0",
+    "@rollup/plugin-commonjs": "^25.0.2",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.1.0",
+    "@rollup/plugin-terser": "^0.4.3",
+    "@rollup/plugin-typescript": "^11.1.2",
+    "@types/cross-spawn": "^6.0.2",
+    "@types/fs-extra": "^11.0.1",
+    "mto-lint": "^0.3.0",
+    "rollup": "^3.26.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-serve": "^2.0.2",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.6.0",
+    "typescript": "^5.1.6"
+  }
+}

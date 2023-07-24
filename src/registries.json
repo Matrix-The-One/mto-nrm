@@ -1,0 +1,22 @@
+[
+  {
+    "name": "npm",
+    "home": "https://www.npmjs.org/",
+    "registry": "https://registry.npmjs.org/"
+  },
+  {
+    "name": "yarn",
+    "home": "https://yarnpkg.com/",
+    "registry": "https://registry.yarnpkg.com/"
+  },
+  {
+    "name": "taobao",
+    "home": "https://npmmirror.com/",
+    "registry": "https://registry.npmmirror.com/"
+  },
+  {
+    "name": "tencent",
+    "home": "https://mirrors.cloud.tencent.com/npm/",
+    "registry": "https://mirrors.cloud.tencent.com/npm/"
+  }
+]
