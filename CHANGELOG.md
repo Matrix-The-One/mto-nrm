@@ -1,5 +1,11 @@
 # mto-nrm
 
+## 0.2.0
+
+### Minor Changes
+
+- feat: add get and set commands
+
 ## 0.1.4
 
 ### Patch Changes

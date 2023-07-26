@@ -1,6 +1,6 @@
 {
   "name": "mto-nrm",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "A library for easy switching of the npm registry",
   "keywords": [
     "npm",
@@ -20,7 +20,7 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "es/index.d.ts",
-  "bin": "lib/index.js",
+  "bin": "es/index.js",
   "files": [
     "es",
     "lib",
