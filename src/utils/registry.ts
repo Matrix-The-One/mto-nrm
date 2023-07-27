@@ -1,3 +1,4 @@
+import registries from '@/registries.json'
 import { spawnAsync } from './spawnAsync'
 
 /**
@@ -13,4 +14,11 @@ export const getRegistry = async () => {
  */
 export const setRegistry = async (registry: string) => {
   await spawnAsync('npm', ['config', 'set', 'registry', registry])
+}
+
+/**
+ * @name 获取registry名称集合
+ */
+export const getRegistryNames = () => {
+  return registries.map((i) => i.name)
 }

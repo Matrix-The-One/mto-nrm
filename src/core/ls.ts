@@ -2,6 +2,9 @@ import { select } from '@inquirer/prompts'
 import registries from '@/registries.json'
 import { getRegistry, setRegistry, strWith } from '@/utils'
 
+/**
+ * @name 交互式选取registry
+ */
 export const ls = async () => {
   const registry = await getRegistry()
   const selectRegistry = await select({

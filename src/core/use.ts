@@ -1,13 +1,15 @@
-import chalk from 'chalk'
 import registries from '@/registries.json'
-import { setRegistry } from '@/utils'
+import { getRegistryNames, logError, setRegistry } from '@/utils'
 
+/**
+ * @name 命令式设置registry
+ */
 export const use = async (registryName: string) => {
-  const registryNames = registries.map((i) => i.name)
-  if (registryNames.includes(registryName)) {
-    const registry = registries.find((i) => i.name === registryName)?.registry
+  const registry = registries.find((i) => i.name === registryName)?.registry
+
+  if (registry) {
     await setRegistry(registry!)
   } else {
-    console.log(chalk.red(`Please select from [${registryNames}]`))
+    logError(`Please select from [${getRegistryNames()}]`)
   }
 }

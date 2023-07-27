@@ -18,16 +18,44 @@ A library for easy switching of the npm registry
 npm install mto-nrm -g
 ```
 
+## Example
+
+- interactive selection registry.
+
+```shell
+$ nrm ls
+
+> npm -------------- https://registry.npmjs.org/
+  yarn ------------- https://registry.yarnpkg.com/
+  taobao ----------- https://registry.npmmirror.com/
+  tencent ---------- https://mirrors.cloud.tencent.com/npm/
+```
+
+- command selection registry.
+
+```shell
+$ nrm use taobao
+```
+
 ## Usage
 
 ```shell
-mto-nrm ls
-```
+Usage: mto-nrm [options] [command]
 
-or
+A library for easy switching of the npm registry
 
-```shell
-mto-nrm use npm
+Options:
+  -V, --version   output the version number
+  -h, --help      display help for command
+
+Commands:
+  ls              interactive selection registry
+  use <string>    command selection registry
+  get             get registry
+  set <string>    set registry
+  home <string>   view registry home
+  view <string>   view registry
+  help [command]  display help for command
 ```
 
 ## License

@@ -1,7 +1,9 @@
-import chalk from 'chalk'
-import { getRegistry } from '@/utils'
+import { getRegistry, logLink } from '@/utils'
 
+/**
+ * @name 获取当前registry
+ */
 export const get = async () => {
   const registry = await getRegistry()
-  console.log(chalk.green(registry))
+  logLink(registry)
 }

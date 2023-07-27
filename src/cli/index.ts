@@ -1,7 +1,7 @@
 import { program } from 'commander'
 import fs from 'fs-extra'
 import path from 'path'
-import { get, ls, set, use } from '@/core'
+import { get, home, ls, set, use, view } from '@/core'
 import registries from '@/registries.json'
 
 const init = async () => {
@@ -27,6 +27,18 @@ const init = async () => {
     .description('set registry')
     .argument('<string>', 'registry source')
     .action(set)
+
+  program
+    .command('home')
+    .description('view registry home')
+    .argument('<string>', 'registry name')
+    .action(home)
+
+  program
+    .command('view')
+    .description('view registry')
+    .argument('<string>', 'registry name')
+    .action(view)
 
   program.parse(process.argv)
 }

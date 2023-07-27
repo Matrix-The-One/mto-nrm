@@ -20,6 +20,9 @@ type StrWithParams = {
   length?: number
 }
 
+/**
+ * @name 补偿字符串中间分隔符
+ */
 export const strWith = ({
   str = '',
   sign = '-',
