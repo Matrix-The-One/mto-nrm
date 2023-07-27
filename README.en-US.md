@@ -23,7 +23,7 @@ npm install mto-nrm -g
 - interactive selection registry.
 
 ```shell
-$ nrm ls
+$ mto-nrm ls
 
 > npm -------------- https://registry.npmjs.org/
   yarn ------------- https://registry.yarnpkg.com/
@@ -34,7 +34,7 @@ $ nrm ls
 - command selection registry.
 
 ```shell
-$ nrm use taobao
+$ mto-nrm use taobao
 ```
 
 ## Usage

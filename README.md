@@ -23,7 +23,7 @@ npm install mto-nrm -g
 - 交互式选取registry。
 
 ```shell
-$ nrm ls
+$ mto-nrm ls
 
 > npm -------------- https://registry.npmjs.org/
   yarn ------------- https://registry.yarnpkg.com/
@@ -34,7 +34,7 @@ $ nrm ls
 - 命令式设置registry。
 
 ```shell
-$ nrm use taobao
+$ mto-nrm use taobao
 ```
 
 ## 使用

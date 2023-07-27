@@ -1,5 +1,11 @@
 # mto-nrm
 
+## 0.3.1
+
+### Patch Changes
+
+- choer: Fix Documentation Errors
+
 ## 0.3.0
 
 ### Minor Changes
