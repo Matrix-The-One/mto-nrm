@@ -1,5 +1,11 @@
 # mto-nrm
 
+## 0.3.2
+
+### Patch Changes
+
+- refactor: home和view命令增加默认值
+
 ## 0.3.1
 
 ### Patch Changes

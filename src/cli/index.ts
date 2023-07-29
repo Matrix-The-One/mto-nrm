@@ -31,13 +31,13 @@ const init = async () => {
   program
     .command('home')
     .description('view registry home')
-    .argument('<string>', 'registry name')
+    .argument('[string]', 'registry name')
     .action(home)
 
   program
     .command('view')
     .description('view registry')
-    .argument('<string>', 'registry name')
+    .argument('[string]', 'registry name')
     .action(view)
 
   program.parse(process.argv)

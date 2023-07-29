@@ -1,15 +1,20 @@
 import registries from '@/registries.json'
-import { getRegistryNames, logError, logLink } from '@/utils'
+import { getRegistry, getRegistryNames, logError, logLink } from '@/utils'
 
 /**
  * @name 获取当前registry的home
  */
-export const home = async (registryName: string) => {
-  const home = registries.find((i) => i.name === registryName)?.home
+export const home = async (registryName?: string) => {
+  let home: string | undefined
 
-  if (home) {
-    logLink(home)
+  if (registryName) {
+    home = registries.find((i) => i.name === registryName)?.home
   } else {
-    logError(`Please select from [${getRegistryNames()}]`)
+    const registry = await getRegistry()
+    home = registries.find((i) => i.registry === registry)?.home
   }
+
+  if (home) return logLink(home)
+
+  logError(`Please select from [${getRegistryNames()}]`)
 }
