@@ -2,10 +2,12 @@ import { program } from 'commander'
 import fs from 'fs-extra'
 import path from 'path'
 import { get, home, ls, set, use, view } from '@/core'
-import registries from '@/registries.json'
+import { getRegistryNames } from '@/utils'
 
 const init = async () => {
   const packageJson = await fs.readJSON(path.join(process.cwd(), 'package.json'))
+  const registriesNames = getRegistryNames().join(' | ')
+
   program
     .name(packageJson.name)
     .description(packageJson.description)
@@ -13,14 +15,17 @@ const init = async () => {
 
   program.command('ls').description('interactive selection registry').action(ls)
 
-  const registriesNames = registries.map((i) => i.name).join(' | ')
   program
     .command('use')
     .description('command selection registry')
     .argument('<string>', registriesNames)
     .action(use)
 
-  program.command('get').description('get registry').action(get)
+  program
+    .command('get')
+    .description('get registry')
+    .argument('[string]', registriesNames)
+    .action(get)
 
   program
     .command('set')
@@ -31,13 +36,13 @@ const init = async () => {
   program
     .command('home')
     .description('view registry home')
-    .argument('[string]', 'registry name')
+    .argument('[string]', registriesNames)
     .action(home)
 
   program
     .command('view')
     .description('view registry')
-    .argument('[string]', 'registry name')
+    .argument('[string]', registriesNames)
     .action(view)
 
   program.parse(process.argv)

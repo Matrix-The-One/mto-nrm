@@ -1,5 +1,11 @@
 # mto-nrm
 
+## 0.3.3
+
+### Patch Changes
+
+- refactor: get命令新增registryName可选项
+
 ## 0.3.2
 
 ### Patch Changes
