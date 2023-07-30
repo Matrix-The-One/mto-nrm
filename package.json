@@ -1,6 +1,6 @@
 {
   "name": "mto-nrm",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "A library for easy switching of the npm registry",
   "keywords": [
     "npm",
@@ -31,6 +31,7 @@
     "ci:publish": "pnpm run build && changeset publish",
     "ci:version": "changeset version",
     "mto-nrm": "node es/index.js",
+    "mto-nrm:lib": "cross-env MTO_NRM_ENV=lib node es/index.js",
     "ri": "npx rimraf node_modules pnpm-lock.yaml && pnpm i",
     "start": "rollup -w -c rollup.config.dev.js",
     "tsc": "tsc"
@@ -49,6 +50,7 @@
     "@rollup/plugin-typescript": "^11.1.2",
     "@types/cross-spawn": "^6.0.2",
     "@types/fs-extra": "^11.0.1",
+    "cross-env": "^7.0.3",
     "deepmerge": "^4.3.1",
     "mto-lint": "^0.3.0",
     "rollup": "^3.26.0",

@@ -1,5 +1,5 @@
 import registries from '@/registries.json'
-import { getRegistry, getRegistryNames, logError, logLink } from '@/utils'
+import { getRegistry, getRegistryNames, isLib, logError, logLink } from '@/utils'
 
 /**
  * @name 获取registry
@@ -17,6 +17,8 @@ export const get = async (registryName?: string) => {
   } else {
     registry = await getRegistry()
   }
+
+  if (isLib) return registry
 
   logLink(registry)
 }

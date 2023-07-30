@@ -1,5 +1,11 @@
 # mto-nrm
 
+## 0.4.0
+
+### Minor Changes
+
+- feat: 新增模块引入方式输出
+
 ## 0.3.3
 
 ### Patch Changes

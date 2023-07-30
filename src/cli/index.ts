@@ -4,6 +4,12 @@ import path from 'path'
 import { get, home, ls, set, use, view } from '@/core'
 import { getRegistryNames } from '@/utils'
 
+const voidFunc = (func: Function) => {
+  return (...args: any[]) => {
+    func(...args)
+  }
+}
+
 const init = async () => {
   const packageJson = await fs.readJSON(path.join(process.cwd(), 'package.json'))
   const registriesNames = getRegistryNames().join(' | ')
@@ -13,7 +19,7 @@ const init = async () => {
     .description(packageJson.description)
     .version(`v${packageJson.version}`)
 
-  program.command('ls').description('interactive selection registry').action(ls)
+  program.command('ls').description('interactive selection registry').action(voidFunc(ls))
 
   program
     .command('use')
@@ -25,7 +31,7 @@ const init = async () => {
     .command('get')
     .description('get registry')
     .argument('[string]', registriesNames)
-    .action(get)
+    .action(voidFunc(get))
 
   program
     .command('set')
@@ -37,13 +43,13 @@ const init = async () => {
     .command('home')
     .description('view registry home')
     .argument('[string]', registriesNames)
-    .action(home)
+    .action(voidFunc(home))
 
   program
     .command('view')
     .description('view registry')
     .argument('[string]', registriesNames)
-    .action(view)
+    .action(voidFunc(view))
 
   program.parse(process.argv)
 }

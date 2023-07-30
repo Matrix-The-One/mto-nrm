@@ -1,4 +1,4 @@
-type StrWithParams = {
+type PadStringParams = {
   /**
    * @name 要格式化的字符串
    */
@@ -23,12 +23,12 @@ type StrWithParams = {
 /**
  * @name 补偿字符串中间分隔符
  */
-export const strWith = ({
+export const padString = ({
   str = '',
   sign = '-',
   separator = sign,
   length = str.length,
-}: StrWithParams) => {
+}: PadStringParams) => {
   const reg = new RegExp(sign)
   const withLength = length - str.length
   return str.replace(reg, separator.repeat(withLength))
