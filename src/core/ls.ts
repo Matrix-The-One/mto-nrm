@@ -13,7 +13,7 @@ export const ls = async () => {
   }
 
   const selectRegistry = await select({
-    message: `Select a registry (current: ${registry!})`,
+    message: `Select a registry (current: ${registry})`,
     choices: registries
       .map((i) => ({
         name: padString({ str: `${i.name} - `, length: 20 }).concat(i.registry),
