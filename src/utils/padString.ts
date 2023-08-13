@@ -30,6 +30,6 @@ export const padString = ({
   length = str.length,
 }: PadStringParams) => {
   const reg = new RegExp(sign)
-  const withLength = length - str.length
-  return str.replace(reg, separator.repeat(withLength))
+  const withLength = length - str.length + 1
+  return str.replace(reg, separator.repeat(Math.max(withLength, 1)))
 }

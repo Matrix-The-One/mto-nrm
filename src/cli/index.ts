@@ -4,7 +4,7 @@ import path from 'path'
 import { get, home, ls, set, use, view } from '@/core'
 import { getRegistryNames } from '@/utils'
 
-const voidFunc = (func: Function) => {
+const voidFunc = (func: (...args: any[]) => any) => {
   return (...args: any[]) => {
     func(...args)
   }
@@ -17,7 +17,7 @@ const init = async () => {
   program
     .name(packageJson.name)
     .description(packageJson.description)
-    .version(`v${packageJson.version}`)
+    .version(`v${packageJson.version as string}`)
 
   program.command('ls').description('interactive selection registry').action(voidFunc(ls))
 

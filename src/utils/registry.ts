@@ -1,19 +1,19 @@
+import { $ } from 'execa'
 import registries from '@/registries.json'
-import { spawnAsync } from './spawnAsync'
 
 /**
  * @name 获取registry
  */
 export const getRegistry = async () => {
-  const registry = await spawnAsync('npm', ['config', 'get', 'registry'])
-  return registry
+  const { stdout } = await $`npm config get registry`
+  return stdout
 }
 
 /**
  * @name 设置registry
  */
 export const setRegistry = async (registry: string) => {
-  await spawnAsync('npm', ['config', 'set', 'registry', registry])
+  await $`npm config set registry ${registry}`
 }
 
 /**

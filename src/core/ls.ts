@@ -8,12 +8,12 @@ import { getRegistry, isLib, padString, setRegistry } from '@/utils'
 export const ls = async () => {
   const registry = await getRegistry()
 
-  if (isLib) {
+  if (isLib()) {
     return registries.map((i) => ({ ...i, select: i.registry === registry }))
   }
 
   const selectRegistry = await select({
-    message: `Select a registry (current: ${registry})`,
+    message: `Select a registry (current: ${registry!})`,
     choices: registries
       .map((i) => ({
         name: padString({ str: `${i.name} - `, length: 20 }).concat(i.registry),

@@ -10,7 +10,7 @@ export const view = async (registryName?: string) => {
   if (registryName) {
     registryInfo = registries.find((i) => i.name === registryName)
     if (!registryInfo) {
-      logError(`Please select from [${getRegistryNames()}]`)
+      logError(`Please select from [${getRegistryNames().toString()}]`)
       return
     }
   } else {
@@ -18,7 +18,7 @@ export const view = async (registryName?: string) => {
     registryInfo = registries.find((i) => i.registry === registry)
   }
 
-  if (isLib) return registryInfo
+  if (isLib()) return registryInfo
 
   log('cyan', JSON.stringify(registryInfo, void 0, 2))
 }

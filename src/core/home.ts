@@ -11,7 +11,7 @@ export const home = async (registryName?: string) => {
     home = registries.find((i) => i.name === registryName)?.home
 
     if (!home) {
-      logError(`Please select from [${getRegistryNames()}]`)
+      logError(`Please select from [${getRegistryNames().toString()}]`)
       return
     }
   } else {
@@ -19,7 +19,7 @@ export const home = async (registryName?: string) => {
     home = registries.find((i) => i.registry === registry)?.home
   }
 
-  if (isLib) return home
+  if (isLib()) return home
 
   logLink(home)
 }

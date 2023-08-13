@@ -3,13 +3,12 @@ import alias from '@rollup/plugin-alias'
 import json from '@rollup/plugin-json'
 import typescript from '@rollup/plugin-typescript'
 import merge from 'deepmerge'
-import { dirname } from 'path'
 import path from 'path'
 import { defineConfig } from 'rollup'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const __dirname = path.dirname(__filename)
 
 const baseConfig = defineConfig({
   input: 'src/index.ts',

@@ -8,17 +8,17 @@ export const get = async (registryName?: string) => {
   let registry: string | undefined
 
   if (registryName) {
-    registry = registries.find((i) => i.name === registryName)?.home
+    registry = registries.find((i) => i.name === registryName)?.registry
 
     if (!registry) {
-      logError(`Please select from [${getRegistryNames()}]`)
+      logError(`Please select from [${getRegistryNames().toString()}]`)
       return
     }
   } else {
     registry = await getRegistry()
   }
 
-  if (isLib) return registry
+  if (isLib()) return registry
 
   logLink(registry)
 }

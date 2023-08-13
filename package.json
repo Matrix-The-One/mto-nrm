@@ -28,12 +28,14 @@
   "scripts": {
     "build": "npx rimraf es lib && rollup -c",
     "changeset": "changeset",
-    "ci:publish": "pnpm run build && changeset publish",
+    "ci:publish": "pnpm build && changeset publish",
+    "ci:test": "pnpm build && npm link && vitest run && npm unlink mto-nrm -g",
     "ci:version": "changeset version",
     "mto-nrm": "node es/index.js",
     "mto-nrm:lib": "cross-env MTO_NRM_ENV=lib node es/index.js",
     "ri": "npx rimraf node_modules pnpm-lock.yaml && pnpm i",
     "start": "rollup -w -c rollup.config.dev.js",
+    "test": "npm link && vitest",
     "tsc": "tsc"
   },
   "dependencies": {
@@ -41,6 +43,7 @@
     "chalk": "^5.3.0",
     "commander": "^11.0.0",
     "cross-spawn": "^7.0.3",
+    "execa": "^7.2.0",
     "fs-extra": "^11.1.1"
   },
   "devDependencies": {
@@ -54,6 +57,7 @@
     "deepmerge": "^4.3.1",
     "mto-lint": "^0.3.0",
     "rollup": "^3.26.0",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "vitest": "^0.33.0"
   }
 }
