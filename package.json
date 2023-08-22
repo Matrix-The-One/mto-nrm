@@ -53,7 +53,6 @@
     "@rollup/plugin-typescript": "^11.1.2",
     "@types/fs-extra": "^11.0.1",
     "@vitest/coverage-v8": "^0.34.2",
-    "@vitest/ui": "^0.34.2",
     "cross-env": "^7.0.3",
     "deepmerge": "^4.3.1",
     "mdast-util-to-string": "^4.0.0",
