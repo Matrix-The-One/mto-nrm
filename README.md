@@ -14,7 +14,7 @@
 
 ## 安装
 
-```shell
+```sh
 npm install mto-nrm -g
 ```
 
@@ -22,8 +22,8 @@ npm install mto-nrm -g
 
 - 交互式选取registry。
 
-```shell
-$ mto-nrm ls
+```sh
+mto-nrm ls
 
 > npm -------------- https://registry.npmjs.org/
   yarn ------------- https://registry.yarnpkg.com/
@@ -33,13 +33,13 @@ $ mto-nrm ls
 
 - 命令式设置registry。
 
-```shell
-$ mto-nrm use taobao
+```sh
+mto-nrm use taobao
 ```
 
 ## 使用
 
-```shell
+```
 Usage: mto-nrm [options] [command]
 
 A library for easy switching of the npm registry
@@ -51,10 +51,10 @@ Options:
 Commands:
   ls              interactive selection registry
   use <string>    command selection registry
-  get             get registry
+  get [string]    get registry
   set <string>    set registry
-  home <string>   view registry home
-  view <string>   view registry
+  home [string]   view registry home
+  view [string]   view registry
   help [command]  display help for command
 ```
 
