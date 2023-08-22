@@ -12,7 +12,7 @@ export const home = async (registryName?: string) => {
 
     if (!home) {
       logError(`Please select from [${getRegistryNames().toString()}]`)
-      return
+      return false
     }
   } else {
     const registry = await getRegistry()

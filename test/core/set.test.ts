@@ -10,6 +10,6 @@ test('set:cli', async () => {
 
 test('set:lib', async () => {
   vi.stubEnv('MTO_NRM_ENV', 'lib')
-  const func = vi.fn(set)
-  expect(func(testRegistry.registry)).resolves.toBeUndefined()
+  const result = await set(testRegistry.registry)
+  expect(result).toBeUndefined()
 })

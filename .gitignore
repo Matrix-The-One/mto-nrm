@@ -17,7 +17,3 @@ node_modules
 temp
 debug
 *.log*
-
-yarn.lock
-pnpm-lock.yaml
-package-lock.json

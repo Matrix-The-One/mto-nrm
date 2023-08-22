@@ -11,5 +11,6 @@ export const use = async (registryName: string) => {
     await setRegistry(registry)
   } else {
     logError(`Please select from [${getRegistryNames().toString()}]`)
+    return false
   }
 }

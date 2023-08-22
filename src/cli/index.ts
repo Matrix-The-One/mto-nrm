@@ -25,7 +25,7 @@ const init = async () => {
     .command('use')
     .description('command selection registry')
     .argument('<string>', registriesNames)
-    .action(use)
+    .action(voidFunc(use))
 
   program
     .command('get')

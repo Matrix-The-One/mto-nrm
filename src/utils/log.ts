@@ -4,7 +4,7 @@ import type { ColorName } from 'chalk'
 /**
  * @name 打印
  */
-export const log = (colorName?: ColorName, message?: string) => {
+export const log = (message?: string, colorName?: ColorName) => {
   console.log(colorName ? chalk[colorName](message) : chalk(message))
 }
 

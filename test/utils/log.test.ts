@@ -3,7 +3,13 @@ import { log, logError, logLink } from '@/utils'
 
 test('log', async () => {
   const func = vi.fn(log)
-  func('bgBlue', 'log test')
+  func('log test')
+  expect(func).toHaveBeenCalled()
+})
+
+test('log:bgBlue', async () => {
+  const func = vi.fn(log)
+  func('log test', 'bgBlue')
   expect(func).toHaveBeenCalled()
 })
 

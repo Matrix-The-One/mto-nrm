@@ -28,14 +28,16 @@
   "scripts": {
     "build": "npx rimraf es lib && rollup -c",
     "changeset": "changeset",
-    "ci:test": "pnpm build && pnpm test",
-    "ci:version": "changeset version",
     "mto-nrm": "node es/index.js",
-    "release": "pnpm build && changeset publish",
+    "release": "pnpm build && npm publish",
+    "release-text": "node --loader ts-node/esm ./scripts/release.ts",
     "ri": "npx rimraf node_modules pnpm-lock.yaml && pnpm i",
     "start": "rollup -w -c rollup.config.dev.js",
+    "tag": "changeset tag && git push --follow-tags",
     "test": "npm link && vitest",
-    "tsc": "tsc"
+    "test:ci": "pnpm build && npm link && vitest run --coverage",
+    "tsc": "tsc",
+    "version": "changeset version"
   },
   "dependencies": {
     "@inquirer/prompts": "^2.3.0",
@@ -50,11 +52,18 @@
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-typescript": "^11.1.2",
     "@types/fs-extra": "^11.0.1",
+    "@vitest/coverage-v8": "^0.34.2",
+    "@vitest/ui": "^0.34.2",
     "cross-env": "^7.0.3",
     "deepmerge": "^4.3.1",
+    "mdast-util-to-string": "^4.0.0",
     "mto-lint": "^0.3.0",
+    "remark-parse": "^10.0.2",
+    "remark-stringify": "^10.0.3",
     "rollup": "^3.26.0",
+    "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
+    "unified": "^11.0.2",
     "vitest": "^0.33.0"
   }
 }
