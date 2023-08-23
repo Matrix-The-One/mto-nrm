@@ -4,7 +4,7 @@ import { getRegistry, getRegistryNames, isLib, logError, logLink } from '@/utils
 /**
  * @name 查看home
  */
-export const home = async (registryName?: string) => {
+export const home = async (registryName?: string, option: ExecOptionType = {}) => {
   let home: string | undefined
 
   if (registryName) {
@@ -15,7 +15,7 @@ export const home = async (registryName?: string) => {
       return false
     }
   } else {
-    const registry = await getRegistry()
+    const registry = await getRegistry(option.exec)
     home = registries.find((i) => i.registry === registry)?.home
   }
 

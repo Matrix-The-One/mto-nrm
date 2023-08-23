@@ -5,8 +5,9 @@ import { getRegistry, isLib, padString, setRegistry } from '@/utils'
 /**
  * @name 交互式选取registry
  */
-export const ls = async () => {
-  const registry = await getRegistry()
+/* c8 ignore next 100 */
+export const ls = async (option: ExecOptionType = {}) => {
+  const registry = await getRegistry(option.exec)
 
   if (isLib()) {
     return registries.map((i) => ({ ...i, select: i.registry === registry }))
@@ -22,5 +23,5 @@ export const ls = async () => {
       .sort((i) => (i.value === registry ? -1 : 0)),
   })
 
-  await setRegistry(selectRegistry)
+  await setRegistry(selectRegistry, option.exec)
 }

@@ -4,11 +4,11 @@ import { getRegistryNames, logError, setRegistry } from '@/utils'
 /**
  * @name 命令式设置registry
  */
-export const use = async (registryName: string) => {
+export const use = async (registryName: string, option: ExecOptionType = {}) => {
   const registry = registries.find((i) => i.name === registryName)?.registry
 
   if (registry) {
-    await setRegistry(registry)
+    await setRegistry(registry, option.exec)
   } else {
     logError(`Please select from [${getRegistryNames().toString()}]`)
     return false

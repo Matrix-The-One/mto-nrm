@@ -1,5 +1,11 @@
 # mto-nrm
 
+## 0.5.0
+
+### Minor Changes
+
+- feat: 新增exec选项，支持yarn、pnpm等命令
+
 ## 0.4.0
 
 ### Minor Changes

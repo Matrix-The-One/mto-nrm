@@ -4,6 +4,8 @@ import path from 'path'
 import { get, home, ls, set, use, view } from '@/core'
 import { getRegistryNames } from '@/utils'
 
+const execOption: [string, string, string] = ['-e, --exec <string>', 'executable program', 'npm']
+
 const voidFunc = (func: (...args: any[]) => any) => {
   return (...args: any[]) => {
     func(...args)
@@ -19,36 +21,45 @@ const init = async () => {
     .description(packageJson.description)
     .version(`v${packageJson.version as string}`)
 
-  program.command('ls').description('interactive selection registry').action(voidFunc(ls))
+  program
+    .command('ls')
+    .description('interactive selection registry')
+    .option(...execOption)
+    .action(voidFunc(ls))
 
   program
     .command('use')
     .description('command selection registry')
     .argument('<string>', registriesNames)
+    .option(...execOption)
     .action(voidFunc(use))
 
   program
     .command('get')
     .description('get registry')
     .argument('[string]', registriesNames)
+    .option(...execOption)
     .action(voidFunc(get))
 
   program
     .command('set')
     .description('set registry')
     .argument('<string>', 'registry source')
+    .option(...execOption)
     .action(set)
 
   program
     .command('home')
     .description('view registry home')
     .argument('[string]', registriesNames)
+    .option(...execOption)
     .action(voidFunc(home))
 
   program
     .command('view')
     .description('view registry')
     .argument('[string]', registriesNames)
+    .option(...execOption)
     .action(voidFunc(view))
 
   program.parse(process.argv)

@@ -4,16 +4,16 @@ import registries from '@/registries.json'
 /**
  * @name 获取registry
  */
-export const getRegistry = async () => {
-  const { stdout } = await $`npm config get registry`
+export const getRegistry = async (exec: string = 'npm') => {
+  const { stdout } = await $`${exec} config get registry`
   return stdout
 }
 
 /**
  * @name 设置registry
  */
-export const setRegistry = async (registry: string) => {
-  await $`npm config set registry ${registry}`
+export const setRegistry = async (registry: string, exec: string = 'npm') => {
+  await $`${exec} config set registry ${registry}`
 }
 
 /**

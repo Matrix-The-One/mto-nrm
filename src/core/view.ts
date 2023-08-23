@@ -4,7 +4,7 @@ import { getRegistry, getRegistryNames, isLib, log, logError } from '@/utils'
 /**
  * @name 查看registry信息
  */
-export const view = async (registryName?: string) => {
+export const view = async (registryName?: string, option: ExecOptionType = {}) => {
   let registryInfo: RegistryInfo | undefined
 
   if (registryName) {
@@ -14,7 +14,7 @@ export const view = async (registryName?: string) => {
       return false
     }
   } else {
-    const registry = await getRegistry()
+    const registry = await getRegistry(option.exec)
     registryInfo = registries.find((i) => i.registry === registry)
   }
 
