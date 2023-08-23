@@ -10,7 +10,7 @@
 
 # mto-nrm
 
-一个便于切换 npm 注册表的库
+一个便于切换注册表的库
 
 ## 安装
 
@@ -37,6 +37,12 @@ mto-nrm ls
 mto-nrm use taobao
 ```
 
+- 使用yarn。
+
+```sh
+mto-nrm use taobao -e yarn
+```
+
 ## 使用
 
 ```
@@ -45,17 +51,17 @@ Usage: mto-nrm [options] [command]
 A library for easy switching of the npm registry
 
 Options:
-  -V, --version   output the version number
-  -h, --help      display help for command
+  -V, --version            output the version number
+  -h, --help               display help for command
 
 Commands:
-  ls              interactive selection registry
-  use <string>    command selection registry
-  get [string]    get registry
-  set <string>    set registry
-  home [string]   view registry home
-  view [string]   view registry
-  help [command]  display help for command
+  ls [options]             interactive selection registry
+  use [options] <string>   command selection registry
+  get [options] [string]   get registry
+  set [options] <string>   set registry
+  home [options] [string]  view registry home
+  view [options] [string]  view registry
+  help [command]           display help for command
 ```
 
 ## 开源许可证

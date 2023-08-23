@@ -1,5 +1,11 @@
 # mto-nrm
 
+## 0.5.2
+
+### Patch Changes
+
+- docs: 更新文档
+
 ## 0.5.1
 
 ### Patch Changes
