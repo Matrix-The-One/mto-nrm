@@ -1,7 +1,7 @@
 import { program } from 'commander'
 import fs from 'fs-extra'
 import path from 'path'
-import { get, home, ls, set, use, view } from '@/core'
+import { add, clear, del, get, home, ls, set, update, use, view } from '@/core'
 import { getRegistryNames } from '@/utils'
 
 const execOption: [string, string, string] = ['-e, --exec <string>', 'executable program', 'npm']
@@ -14,7 +14,8 @@ const voidFunc = (func: (...args: any[]) => any) => {
 
 const init = async () => {
   const packageJson = await fs.readJSON(path.join(process.cwd(), 'package.json'))
-  const registriesNames = getRegistryNames().join(' | ')
+  const registriesNames = await getRegistryNames()
+  const namesString = registriesNames.join(' | ')
 
   program
     .name(packageJson.name)
@@ -30,14 +31,14 @@ const init = async () => {
   program
     .command('use')
     .description('command selection registry')
-    .argument('<string>', registriesNames)
+    .argument('<string>', namesString)
     .option(...execOption)
     .action(voidFunc(use))
 
   program
     .command('get')
     .description('get registry')
-    .argument('[string]', registriesNames)
+    .argument('[string]', namesString)
     .option(...execOption)
     .action(voidFunc(get))
 
@@ -51,16 +52,41 @@ const init = async () => {
   program
     .command('home')
     .description('view registry home')
-    .argument('[string]', registriesNames)
+    .argument('[string]', namesString)
     .option(...execOption)
     .action(voidFunc(home))
 
   program
     .command('view')
     .description('view registry')
-    .argument('[string]', registriesNames)
+    .argument('[string]', namesString)
     .option(...execOption)
     .action(voidFunc(view))
+
+  program
+    .command('add')
+    .description('add registry')
+    .argument('<name>', 'registry name')
+    .argument('<url>', 'registry url')
+    .argument('[home]', 'registry home url')
+    .action(voidFunc(add))
+
+  program
+    .command('update')
+    .description('update registry')
+    .argument('<name>', 'registry name')
+    .option('-n, --name <string>', 'update registry name')
+    .option('-u, --url <string>', 'update registry url')
+    .option('-h, --home <string>', 'update registry home url')
+    .action(voidFunc(update))
+
+  program
+    .command('del')
+    .description('delete registry')
+    .argument('<name>', 'registry name')
+    .action(voidFunc(del))
+
+  program.command('clear').description('clear registry').action(voidFunc(clear))
 
   program.parse(process.argv)
 }

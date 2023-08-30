@@ -1,15 +1,24 @@
 import { $ } from 'execa'
-import { expect, test, vi } from 'vitest'
+import { beforeAll, describe, expect, test, vi } from 'vitest'
+import { setConfig } from '@/config'
 import { set } from '@/core'
-import testRegistry from '../testRegistry'
+import { npm } from '../testRegistry'
 
-test('set:cli', async () => {
-  const { exitCode } = await $`npm config set registry ${testRegistry.registry}`
-  expect(exitCode).toEqual(0)
+describe('set:cli', () => {
+  test('set:cli', async () => {
+    const { exitCode } = await $`npm config set registry ${npm.registry}`
+    expect(exitCode).toEqual(0)
+  })
 })
 
-test('set:lib', async () => {
-  vi.stubEnv('MTO_NRM_ENV', 'lib')
-  const result = await set(testRegistry.registry)
-  expect(result).toBeUndefined()
+describe('set:lib', () => {
+  beforeAll(() => {
+    vi.stubEnv('MTO_NRM_ENV', 'lib')
+    setConfig({ getRegistry: () => [], setRegistry: () => {} })
+  })
+
+  test('set:lib', async () => {
+    const result = await set(npm.registry)
+    expect(result).toBeUndefined()
+  })
 })

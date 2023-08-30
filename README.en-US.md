@@ -25,10 +25,10 @@ npm install mto-nrm -g
 ```sh
 mto-nrm ls
 
-> npm -------------- https://registry.npmjs.org/
-  yarn ------------- https://registry.yarnpkg.com/
-  taobao ----------- https://registry.npmmirror.com/
-  tencent ---------- https://mirrors.cloud.tencent.com/npm/
+> npm --------------- https://registry.npmjs.org/
+  yarn -------------- https://registry.yarnpkg.com/
+  taobao ------------ https://registry.npmmirror.com/
+  tencent ----------- https://mirrors.cloud.tencent.com/npm/
 ```
 
 - command selection registry.
@@ -61,6 +61,10 @@ Commands:
   set [options] <string>   set registry
   home [options] [string]  view registry home
   view [options] [string]  view registry
+  add <name> <url> [home]  add registry
+  update [options] <name>  update registry
+  del <name>               delete registry
+  clear                    clear registry
   help [command]           display help for command
 ```
 

@@ -1,6 +1,6 @@
 import { select } from '@inquirer/prompts'
-import registries from '@/registries.json'
-import { getRegistry, isLib, padString, setRegistry } from '@/utils'
+import { isLib } from '@/config'
+import { getRegistries, getRegistry, padString, setRegistry } from '@/utils'
 
 /**
  * @name 交互式选取registry
@@ -8,6 +8,7 @@ import { getRegistry, isLib, padString, setRegistry } from '@/utils'
 /* c8 ignore next 100 */
 export const ls = async (option: ExecOptionType = {}) => {
   const registry = await getRegistry(option.exec)
+  const registries = await getRegistries()
 
   if (isLib()) {
     return registries.map((i) => ({ ...i, select: i.registry === registry }))

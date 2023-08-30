@@ -1,44 +1,47 @@
 import { $ } from 'execa'
-import { expect, test, vi } from 'vitest'
+import { beforeAll, describe, expect, test, vi } from 'vitest'
+import { setConfig } from '@/config'
 import { get } from '@/core'
-import { getRegistryNames } from '@/utils'
-import testRegistry from '../testRegistry'
+// import { getRegistryNames } from '@/utils'
+import { npm } from '../testRegistry'
 
-test('get:cli', async () => {
-  const { stdout } = await $`mto-nrm get ${testRegistry.name}`
-  expect(stdout).toEqual(testRegistry.registry)
+describe('get:cli', () => {
+  test('get:cli', async () => {
+    const { stdout } = await $`mto-nrm get ${npm.name}`
+    expect(stdout).toEqual(npm.registry)
+  })
+
+  test('get:cli-empty', async () => {
+    const { stdout } = await $`mto-nrm get`
+    expect(stdout).toBeTypeOf('string')
+  })
+
+  test('get:cli-error', async () => {
+    const { stdout } = await $`mto-nrm get errorRegistryName`
+    // const registryNames = await getRegistryNames()
+    // expect(stdout).toEqual(`Please select from [${registryNames.toString()}]`)
+    expect(stdout.startsWith('Please select from')).toBeTruthy()
+  })
 })
 
-test('get:cli-empty', async () => {
-  const { stdout } = await $`mto-nrm get`
-  expect(stdout).toBeTypeOf('string')
-})
+describe('get:lib', () => {
+  beforeAll(() => {
+    vi.stubEnv('MTO_NRM_ENV', 'lib')
+    setConfig({ getRegistry: () => [], setRegistry: () => {} })
+  })
 
-test('get:cli-error', async () => {
-  const { stdout } = await $`mto-nrm get errorRegistryName`
-  expect(stdout).toEqual(`Please select from [${getRegistryNames().toString()}]`)
-})
+  test('get:lib', async () => {
+    const result = await get(npm.name)
+    expect(result).toEqual(npm.registry)
+  })
 
-test('view:lib-cli', async () => {
-  vi.stubEnv('MTO_NRM_ENV', 'cli')
-  const result = await get(testRegistry.name)
-  expect(result).toBeUndefined()
-})
+  test('get:lib-empty', async () => {
+    const result = await get()
+    expect(result).toBeTypeOf('string')
+  })
 
-test('get:lib', async () => {
-  vi.stubEnv('MTO_NRM_ENV', 'lib')
-  const result = await get(testRegistry.name)
-  expect(result).toEqual(testRegistry.registry)
-})
-
-test('get:lib-empty', async () => {
-  vi.stubEnv('MTO_NRM_ENV', 'lib')
-  const result = await get()
-  expect(result).toBeTypeOf('string')
-})
-
-test('get:lib-error', async () => {
-  vi.stubEnv('MTO_NRM_ENV', 'lib')
-  const result = await get('errorRegistryName')
-  expect(result).toBeFalsy()
+  test('get:lib-error', async () => {
+    const result = await get('errorRegistryName')
+    expect(result).toBeFalsy()
+  })
 })

@@ -1,16 +1,17 @@
-import registries from '@/registries.json'
-import { getRegistryNames, logError, setRegistry } from '@/utils'
+import { getRegistries, getRegistryNames, logError, setRegistry } from '@/utils'
 
 /**
  * @name 命令式设置registry
  */
-export const use = async (registryName: string, option: ExecOptionType = {}) => {
-  const registry = registries.find((i) => i.name === registryName)?.registry
+export const use = async (name: string, option: ExecOptionType = {}) => {
+  const registries = await getRegistries()
+  const registry = registries.find((i) => i.name === name)?.registry
 
   if (registry) {
     await setRegistry(registry, option.exec)
   } else {
-    logError(`Please select from [${getRegistryNames().toString()}]`)
+    const registryNames = await getRegistryNames()
+    logError(`Please select from [${registryNames.toString()}]`)
     return false
   }
 }

@@ -1,5 +1,9 @@
 import registries from '@/registries.json'
 
-export const testRegistry = registries.find((i) => i.name === 'taobao')!
+export const npm = registries.find((i) => i.name === 'npm')!
 
-export default testRegistry
+export const cnpm = {
+  name: 'cnpm',
+  home: 'http://r.cnpmjs.org/',
+  registry: 'http://r.cnpmjs.org/',
+}

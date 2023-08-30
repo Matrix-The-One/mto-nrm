@@ -1,17 +1,19 @@
-import registries from '@/registries.json'
-import { getRegistry, getRegistryNames, isLib, logError, logLink } from '@/utils'
+import { isLib } from '@/config'
+import { getRegistries, getRegistry, getRegistryNames, logError, logLink } from '@/utils'
 
 /**
  * @name 获取registry
  */
-export const get = async (registryName?: string, option: ExecOptionType = {}) => {
+export const get = async (name?: string, option: ExecOptionType = {}) => {
   let registry: string | undefined
 
-  if (registryName) {
-    registry = registries.find((i) => i.name === registryName)?.registry
+  if (name) {
+    const registries = await getRegistries()
+    registry = registries.find((i) => i.name === name)?.registry
 
     if (!registry) {
-      logError(`Please select from [${getRegistryNames().toString()}]`)
+      const registryNames = await getRegistryNames()
+      logError(`Please select from [${registryNames.toString()}]`)
       return false
     }
   } else {

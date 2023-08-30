@@ -1,5 +1,6 @@
 import { $ } from 'execa'
 import registries from '@/registries.json'
+import { getMtonrmrcRegistries } from './mtonrmrc'
 
 /**
  * @name 获取registry
@@ -17,8 +18,17 @@ export const setRegistry = async (registry: string, exec: string = 'npm') => {
 }
 
 /**
+ * @name 获取registries
+ */
+export const getRegistries = async () => {
+  const configRegistries = await getMtonrmrcRegistries()
+  return registries.concat(configRegistries)
+}
+
+/**
  * @name 获取registry名称集合
  */
-export const getRegistryNames = () => {
+export const getRegistryNames = async () => {
+  const registries = await getRegistries()
   return registries.map((i) => i.name)
 }

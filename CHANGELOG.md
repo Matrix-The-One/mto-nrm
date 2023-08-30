@@ -1,5 +1,11 @@
 # mto-nrm
 
+## 0.6.0
+
+### Minor Changes
+
+- feat: 新增add、update、del、clear命令
+
 ## 0.5.2
 
 ### Patch Changes

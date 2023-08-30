@@ -1,17 +1,19 @@
-import registries from '@/registries.json'
-import { getRegistry, getRegistryNames, isLib, logError, logLink } from '@/utils'
+import { isLib } from '@/config'
+import { getRegistries, getRegistry, getRegistryNames, logError, logLink } from '@/utils'
 
 /**
  * @name 查看home
  */
-export const home = async (registryName?: string, option: ExecOptionType = {}) => {
+export const home = async (name?: string, option: ExecOptionType = {}) => {
   let home: string | undefined
+  const registries = await getRegistries()
 
-  if (registryName) {
-    home = registries.find((i) => i.name === registryName)?.home
+  if (name) {
+    home = registries.find((i) => i.name === name)?.home
 
     if (!home) {
-      logError(`Please select from [${getRegistryNames().toString()}]`)
+      const registryNames = await getRegistryNames()
+      logError(`Please select from [${registryNames.toString()}]`)
       return false
     }
   } else {

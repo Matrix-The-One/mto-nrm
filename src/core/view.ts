@@ -1,16 +1,19 @@
-import registries from '@/registries.json'
-import { getRegistry, getRegistryNames, isLib, log, logError } from '@/utils'
+import { isLib } from '@/config'
+import { getRegistries, getRegistry, getRegistryNames, log, logError } from '@/utils'
 
 /**
  * @name 查看registry信息
  */
-export const view = async (registryName?: string, option: ExecOptionType = {}) => {
+export const view = async (name?: string, option: ExecOptionType = {}) => {
   let registryInfo: RegistryInfo | undefined
+  const registries = await getRegistries()
 
-  if (registryName) {
-    registryInfo = registries.find((i) => i.name === registryName)
+  if (name) {
+    registryInfo = registries.find((i) => i.name === name)
+
     if (!registryInfo) {
-      logError(`Please select from [${getRegistryNames().toString()}]`)
+      const registryNames = await getRegistryNames()
+      logError(`Please select from [${registryNames.toString()}]`)
       return false
     }
   } else {
