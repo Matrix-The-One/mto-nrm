@@ -1,5 +1,5 @@
 import { isLib } from '@/config'
-import { getRegistries, getRegistry, getRegistryNames, log, logError } from '@/utils'
+import { getRegistries, getRegistry, log, logError } from '@/utils'
 
 /**
  * @name 查看registry信息
@@ -12,8 +12,7 @@ export const view = async (name?: string, option: ExecOptionType = {}) => {
     registryInfo = registries.find((i) => i.name === name)
 
     if (!registryInfo) {
-      const registryNames = await getRegistryNames()
-      logError(`Please select from [${registryNames.toString()}]`)
+      logError(`No registry named ${name} found`)
       return false
     }
   } else {

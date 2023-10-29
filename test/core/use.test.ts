@@ -2,7 +2,6 @@ import { $ } from 'execa'
 import { beforeAll, describe, expect, test, vi } from 'vitest'
 import { setConfig } from '@/config'
 import { use } from '@/core'
-// import { getRegistryNames } from '@/utils'
 import { npm } from '../testRegistry'
 
 describe('use:cli', () => {
@@ -13,9 +12,7 @@ describe('use:cli', () => {
 
   test('use:cli-error', async () => {
     const { stdout } = await $`mto-nrm use errorRegistryName`
-    // const registryNames = await getRegistryNames()
-    // expect(stdout).toEqual(`Please select from [${registryNames.toString()}]`)
-    expect(stdout.startsWith('Please select from')).toBeTruthy()
+    expect(stdout.startsWith('No registry')).toBeTruthy()
   })
 })
 

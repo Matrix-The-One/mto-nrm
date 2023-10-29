@@ -1,4 +1,4 @@
-import { getRegistries, getRegistryNames, logError, setRegistry } from '@/utils'
+import { getRegistries, logError, setRegistry } from '@/utils'
 
 /**
  * @name 命令式设置registry
@@ -10,8 +10,7 @@ export const use = async (name: string, option: ExecOptionType = {}) => {
   if (registry) {
     await setRegistry(registry, option.exec)
   } else {
-    const registryNames = await getRegistryNames()
-    logError(`Please select from [${registryNames.toString()}]`)
+    logError(`No registry named ${name} found`)
     return false
   }
 }

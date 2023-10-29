@@ -1,5 +1,11 @@
 # mto-nrm
 
+## 0.7.0
+
+### Minor Changes
+
+- feat: 新增test命令
+
 ## 0.6.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "mto-nrm",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A library for easy switching of the npm registry",
   "keywords": [
     "npm",
@@ -44,7 +44,9 @@
     "chalk": "^5.3.0",
     "commander": "^11.0.0",
     "execa": "^7.2.0",
-    "fs-extra": "^11.1.1"
+    "fs-extra": "^11.1.1",
+    "node-fetch": "^3.3.2",
+    "ora": "^7.0.1"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
@@ -65,5 +67,8 @@
     "typescript": "^5.1.6",
     "unified": "^11.0.2",
     "vitest": "^0.33.0"
+  },
+  "engines": {
+    "node": ">=16"
   }
 }

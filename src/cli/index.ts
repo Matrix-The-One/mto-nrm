@@ -1,7 +1,7 @@
 import { program } from 'commander'
 import fs from 'fs-extra'
 import path from 'path'
-import { add, clear, del, get, home, ls, set, update, use, view } from '@/core'
+import { add, clear, del, get, home, ls, set, test, update, use, view } from '@/core'
 import { getRegistryNames } from '@/utils'
 
 const execOption: [string, string, string] = ['-e, --exec <string>', 'executable program', 'npm']
@@ -87,6 +87,12 @@ const init = async () => {
     .action(voidFunc(del))
 
   program.command('clear').description('clear registry').action(voidFunc(clear))
+
+  program
+    .command('test')
+    .description('test registry')
+    .argument('[nameOrUrl]', 'registry name or url')
+    .action(voidFunc(test))
 
   program.parse(process.argv)
 }
