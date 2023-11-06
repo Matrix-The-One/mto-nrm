@@ -11,7 +11,7 @@ export const testNetwork = async (registry: string, timeout: number = 5 * 1000) 
   const controller = new AbortController()
   const timer = setTimeout(() => {
     controller.abort()
-  }, timeout)
+  }, Number(timeout))
 
   try {
     const response = await fetch(`${registry}${/\/$/.test(registry) ? '' : '/'}mto-nrm`, {
@@ -31,7 +31,7 @@ export const testNetwork = async (registry: string, timeout: number = 5 * 1000) 
     registry,
     success,
     time: end - start,
-    timeout: end - start >= timeout,
+    timeout: end - start >= Number(timeout),
     error,
   }
 }

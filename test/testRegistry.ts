@@ -4,6 +4,6 @@ export const npm = registries.find((i) => i.name === 'npm')!
 
 export const cnpm = {
   name: 'cnpm',
-  home: 'http://r.cnpmjs.org/',
-  registry: 'http://r.cnpmjs.org/',
+  home: 'https://r.cnpmjs.org/',
+  registry: 'https://r.cnpmjs.org/',
 }

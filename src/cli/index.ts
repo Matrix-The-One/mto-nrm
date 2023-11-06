@@ -31,35 +31,35 @@ const init = async () => {
   program
     .command('use')
     .description('command selection registry')
-    .argument('<string>', namesString)
+    .argument('<name>', namesString)
     .option(...execOption)
     .action(voidFunc(use))
 
   program
     .command('get')
     .description('get registry')
-    .argument('[string]', namesString)
+    .argument('[name]', namesString)
     .option(...execOption)
     .action(voidFunc(get))
 
   program
     .command('set')
     .description('set registry')
-    .argument('<string>', 'registry source')
+    .argument('<name>', 'registry source')
     .option(...execOption)
     .action(set)
 
   program
     .command('home')
     .description('view registry home')
-    .argument('[string]', namesString)
+    .argument('[name]', namesString)
     .option(...execOption)
     .action(voidFunc(home))
 
   program
     .command('view')
     .description('view registry')
-    .argument('[string]', namesString)
+    .argument('[name]', namesString)
     .option(...execOption)
     .action(voidFunc(view))
 
@@ -92,7 +92,7 @@ const init = async () => {
     .command('test')
     .description('test registry')
     .argument('[nameOrUrl]', 'registry name or url')
-    .option('-t, --timeout <number>', 'timeout')
+    .option('-t, --timeout <number>', 'timeout in milliseconds')
     .action(voidFunc(test))
 
   program.parse(process.argv)
