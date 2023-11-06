@@ -4,7 +4,7 @@ import { getRegistries, getRegistry, isUrl, log, logError, testNetwork } from '@
 /**
  * @name 测试registry
  */
-export const test = async (nameOrRegistry?: string) => {
+export const test = async (nameOrRegistry?: string, option?: { timeout?: number }) => {
   let registry = nameOrRegistry
   const registries = await getRegistries()
 
@@ -21,7 +21,7 @@ export const test = async (nameOrRegistry?: string) => {
   }
 
   const spinner = ora({ text: 'Request Loading...', color: 'cyan' }).start()
-  const result = await testNetwork(registry!)
+  const result = await testNetwork(registry!, option?.timeout)
   spinner.stop()
   log(JSON.stringify(result, void 0, 2), 'cyan')
 }

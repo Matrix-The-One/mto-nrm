@@ -3,9 +3,8 @@ import fetch from 'node-fetch'
 /**
  * @name 测试网络
  */
-export const testNetwork = async (registry: string) => {
+export const testNetwork = async (registry: string, timeout: number = 5 * 1000) => {
   const start = Date.now()
-  const timeout = 10 * 1000
   let success = false
   let error: any = null
 

@@ -92,6 +92,7 @@ const init = async () => {
     .command('test')
     .description('test registry')
     .argument('[nameOrUrl]', 'registry name or url')
+    .option('-t, --timeout <number>', 'timeout')
     .action(voidFunc(test))
 
   program.parse(process.argv)
