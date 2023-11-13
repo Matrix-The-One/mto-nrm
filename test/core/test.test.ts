@@ -16,7 +16,7 @@ describe('test:cli', () => {
   })
 
   test('test:cli-timeout', async () => {
-    const { stdout } = await $`mto-nrm test https://example.com`
+    const { stdout } = await $`mto-nrm test https://google.com`
     expect(JSON.parse(stdout).timeout).toBeTruthy()
   })
 
