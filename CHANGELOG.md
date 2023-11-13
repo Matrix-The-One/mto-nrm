@@ -1,5 +1,11 @@
 # mto-nrm
 
+## 0.8.0
+
+### Minor Changes
+
+- feat: 新增config命令
+
 ## 0.7.0
 
 ### Minor Changes

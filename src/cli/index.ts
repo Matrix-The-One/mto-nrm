@@ -1,7 +1,7 @@
 import { program } from 'commander'
 import fs from 'fs-extra'
 import path from 'path'
-import { add, clear, del, get, home, ls, set, test, update, use, view } from '@/core'
+import { add, clear, config, del, get, home, ls, set, test, update, use, view } from '@/core'
 import { getRegistryNames } from '@/utils'
 
 const execOption: [string, string, string] = ['-e, --exec <string>', 'executable program', 'npm']
@@ -94,6 +94,8 @@ const init = async () => {
     .argument('[nameOrUrl]', 'registry name or url')
     .option('-t, --timeout <number>', 'timeout in milliseconds')
     .action(voidFunc(test))
+
+  program.command('config').description('get config file path').action(voidFunc(config))
 
   program.parse(process.argv)
 }

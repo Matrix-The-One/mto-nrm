@@ -20,7 +20,7 @@ npm install mto-nrm -g
 
 ## Example
 
-- interactive selection registry.
+- interactive selection registry
 
 ```sh
 mto-nrm ls
@@ -31,13 +31,13 @@ mto-nrm ls
   tencent ----------- https://mirrors.cloud.tencent.com/npm/
 ```
 
-- command selection registry.
+- command selection registry
 
 ```sh
 mto-nrm use taobao
 ```
 
-- use yarn.
+- use yarn
 
 ```sh
 mto-nrm use taobao -e yarn
@@ -45,27 +45,141 @@ mto-nrm use taobao -e yarn
 
 ## Usage
 
-```
+```text
 Usage: mto-nrm [options] [command]
 
 A library for easy switching of the npm registry
 
 Options:
-  -V, --version            output the version number
-  -h, --help               display help for command
+  -V, --version               output the version number
+  -h, --help                  display help for command
 
 Commands:
-  ls [options]             interactive selection registry
-  use [options] <string>   command selection registry
-  get [options] [string]   get registry
-  set [options] <string>   set registry
-  home [options] [string]  view registry home
-  view [options] [string]  view registry
-  add <name> <url> [home]  add registry
-  update [options] <name>  update registry
-  del <name>               delete registry
-  clear                    clear registry
-  help [command]           display help for command
+  ls [options]                interactive selection registry
+  use [options] <name>        command selection registry
+  get [options] [name]        get registry
+  set [options] <name>        set registry
+  home [options] [name]       view registry home
+  view [options] [name]       view registry
+  add <name> <url> [home]     add registry
+  update [options] <name>     update registry
+  del <name>                  delete registry
+  clear                       clear registry
+  test [options] [nameOrUrl]  test registry
+  config                      get config file path
+  help [command]              display help for command
+```
+
+### get
+
+- get registry
+
+```sh
+mto-nrm get
+```
+
+- get the specified registry
+
+```sh
+mto-nrm get taobao
+```
+
+### set
+
+- set registry
+
+```sh
+mto-nrm set https://registry.npmmirror.com/
+```
+
+### home
+
+- get home
+
+```sh
+mto-nrm home
+```
+
+- get the specified home
+
+```sh
+mto-nrm home taobao
+```
+
+### view
+
+- view registry
+
+```sh
+mto-nrm view
+```
+
+- view the specified registry
+
+```sh
+mto-nrm view taobao
+```
+
+### add
+
+- add registry
+
+```sh
+mto-nrm add cnpm http://r.cnpmjs.org/ http://r.cnpmjs.org/
+```
+
+### update
+
+- update registry
+
+```sh
+mto-nrm update cnpm -u=http://r.cnpmjs.org/ -h=http://r.cnpmjs.org/
+```
+
+### del
+
+- delete registry
+
+```sh
+mto-nrm del cnpm
+```
+
+### clear
+
+- clear registry
+
+```sh
+mto-nrm clear
+```
+
+### test
+
+- test registry
+
+```sh
+mto-nrm test
+```
+
+- test the specified registry
+
+```sh
+mto-nrm test taobao
+```
+
+### config
+
+- get config file path
+
+```sh
+mto-nrm config
+```
+
+## Node Usage
+
+```ts
+import mtonrm from 'mto-nrm'
+
+mtonrm.use('taobao')
 ```
 
 ## License
